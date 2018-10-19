@@ -58,3 +58,44 @@ map.on('click', function(event) {
     document.getElementById('info').innerHTML = lng.toFixed(5) + "," + lat.toFixed(5)
 
 })
+
+let marker = new mapboxgl.Marker()
+marker.setLngLat([-73.97748,40.77448])
+marker.addTo(map)
+
+
+let popup = new mapboxgl.Popup()
+popup.setHTML('This is the building i grew up in<br /><img src="https://cdn-img2.streeteasy.com/nyc/image/74/304593974.jpg" />')
+marker.setPopup(popup)
+
+let data = [
+    {
+        location: [-73.98133,40.77273],
+        content: 'my favorite chinese food restaurant'
+    },
+    {
+        location: [-73.98175,40.77499],
+        content: 'my favorite movie theater'
+    },
+    {
+        location: [-73.98028,40.77084],
+        content: 'my elementary school'
+    },
+    {
+        location: [-73.97664,40.77112],
+        content: 'where i finished the nyc marathon twice'
+    },
+    ]
+
+
+    data.forEach(function(d) {
+
+    let marker = new mapboxgl.Marker()    
+    marker.setLngLat(d.location)
+    marker.addTo(map)  
+
+    let popup = new mapboxgl.Popup()
+    popup.setHTML(d.content)
+    marker.setPopup(popup)
+
+})
